@@ -11,8 +11,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
+/**
+ * Botón flotante de acción (FAB) con icono de suma para la navegación rápida.
+ *
+ * @param onClick Acción a realizar al hacer clic en el botón.
+ */
 @Composable
-fun FloatButton( onClick: () -> Unit  ){
+fun FloatButton(onClick: () -> Unit) {
     FloatingActionButton(
         onClick = onClick,
         containerColor = MaterialTheme.colorScheme.primary,
@@ -22,12 +27,19 @@ fun FloatButton( onClick: () -> Unit  ){
     }
 }
 
+/**
+ * Botón elevado con sombra y diseño personalizado.
+ *
+ * @param onClick Acción ejecutada al hacer clic.
+ * @param text Etiqueta del botón.
+ * @param modifier Modificador de diseño.
+ */
 @Composable
 fun ActionElevatedButton(
     onClick: () -> Unit,
     text: String,
     modifier: Modifier = Modifier
-    ){
+) {
     ElevatedButton(
         onClick = onClick,
         shape = MaterialTheme.shapes.medium,
@@ -37,16 +49,14 @@ fun ActionElevatedButton(
     }
 }
 
-
 @Preview(showBackground = true)
 @Composable
-fun FloatButtonPreview(){
+fun FloatButtonPreview() {
     FloatButton(onClick = {})
 }
 
-
 @Preview(showBackground = true)
 @Composable
-fun ActionElevatedButtonPreview(){
+fun ActionElevatedButtonPreview() {
     ActionElevatedButton(onClick = {}, text = "Agregar")
 }

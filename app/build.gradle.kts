@@ -52,6 +52,8 @@ android {
 dependencies {
     implementation("androidx.compose.material:material-icons-extended")
     implementation("androidx.compose.material3:material3:1.4.0")
+    implementation("androidx.compose.runtime:runtime:1.12.1")
+    implementation("androidx.compose.ui:ui:1.12.1")
     //Librerías de navegación de Jetpack Compose
     val nav_version = "2.10.2"
     implementation("androidx.navigation:navigation-compose:${nav_version}")

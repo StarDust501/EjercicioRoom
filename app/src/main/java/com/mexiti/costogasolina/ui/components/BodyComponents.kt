@@ -17,19 +17,32 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mexiti.costogasolina.R
 
+/**
+ * Titulo principal reutilizable para los encabezados de pantalla.
+ *
+ * @param title Texto a desplegar como título.
+ */
 @Composable
-fun MainTitle(title: String){
-    Text(text = title, fontSize = 30.sp  , fontWeight = FontWeight.Bold)
+fun MainTitle(title: String) {
+    Text(text = title, fontSize = 30.sp, fontWeight = FontWeight.Bold)
 }
 
-
+/**
+ * Componente de opción con interruptor (Switch) para habilitar o deshabilitar campos opcionales
+ * (como agregar propina o guardar kilometraje).
+ *
+ * @param flagData Estado booleano del interruptor.
+ * @param onflagCheckedChange Callback activado al conmutar el estado del interruptor.
+ * @param modifier Modificador de diseño.
+ * @param question Pregunta o texto descriptivo junto al interruptor.
+ */
 @Composable
 fun AddOptionalData(
     flagData: Boolean,
     onflagCheckedChange: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
-    question:String = stringResource(id = R.string.agregar_propina)
-){
+    question: String = stringResource(id = R.string.agregar_propina)
+) {
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -43,23 +56,20 @@ fun AddOptionalData(
             modifier = Modifier.padding(20.dp)
         )
         Switch(
-            checked = flagData ,
-            onCheckedChange = onflagCheckedChange,
-
-            )
+            checked = flagData,
+            onCheckedChange = onflagCheckedChange
+        )
     }
-
-
 }
+
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun MainTitlePreview(){
+fun MainTitlePreview() {
     MainTitle(title = "Gasolina")
 }
 
-
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun AddOptionalDataPreview(){
+fun AddOptionalDataPreview() {
     AddOptionalData(flagData = true, onflagCheckedChange = {})
 }

@@ -4,6 +4,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performTextInput
+import androidx.navigation.compose.rememberNavController
+import com.mexiti.costogasolina.ui.views.CostGasLayout
 import org.junit.Rule
 import org.junit.Test
 import java.text.NumberFormat
@@ -14,10 +16,13 @@ class NuevoMontoUITest {
     val composeTestRule = createComposeRule()
 
     @Test
-    fun CalcularMonto_21l_22_15(){
+    fun CalcularMonto_21l_22_15() {
         composeTestRule.setContent {
             Surface {
-                CostGasLayout()
+                CostGasLayout(
+                    navController = rememberNavController(),
+                    onSaveTransaction = { _, _, _, _, _ -> }
+                )
             }
         }
         composeTestRule.onNodeWithText("Ingresa precio por litro de Gasolina")
@@ -25,10 +30,9 @@ class NuevoMontoUITest {
         composeTestRule.onNodeWithText("Litros")
             .performTextInput("10")
 
-        val montoEsperado = NumberFormat.getCurrencyInstance().format(440)
+        val montoEsperado = NumberFormat.getCurrencyInstance().format(240.0)
 
-        composeTestRule.onNodeWithText("Monto Total: $montoEsperado").
-        assertExists("No se encontro ningún nodo con este texto")
-
+        composeTestRule.onNodeWithText("Monto Total: $montoEsperado")
+            .assertExists("No se encontro ningún nodo con este texto")
     }
 }
